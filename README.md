@@ -259,6 +259,21 @@ The goal is not to replace doctors, but to:
 
 ---
 
+# Project Progress
+
+| Task | Status |
+|---|---|
+| Idea & README.md | ✅ Completed |
+| Dataset Collection | ✅ Completed |
+| Model Training | ⏳ In Progress |
+| Android App Development | ⏳ In Progress |
+| TensorFlow Lite Integration | ⏳ In Progress |
+| Offline Inference Pipeline | ⏳ In Progress |
+| Explainable AI (Grad-CAM) | ⏳ In Progress |
+| Clinical Testing | ⏳ In Progress |
+
+---
+
 # License
 
 Distributed under the MIT License.
