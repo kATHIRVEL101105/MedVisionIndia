@@ -1,218 +1,279 @@
-# 🏥 MedVision India
-### Offline AI-Powered Diagnostic Assistant for Rural India
+# MedVision India
+### Offline Edge-AI Healthcare Screening for Rural India
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Platform](https://img.shields.io/badge/Platform-Android%208%2B-green)](https://android.com)
-[![Status](https://img.shields.io/badge/Status-In%20Development-blue)]()
-[![Made in India](https://img.shields.io/badge/Made%20in-India%20🇮🇳-orange)]()
-
-> **Empowering frontline health workers with AI — no internet required.**
-
-MedVision India is a compact, offline-first mobile AI system that helps ASHA workers, ANMs, and rural clinicians screen for **Tuberculosis**, **Skin Lesions**, and **Ophthalmic Diseases** using both camera images and patient symptom data. All inference runs on-device. No data ever leaves the phone.
+![License](https://img.shields.io/badge/license-MIT-yellow)
+![Platform](https://img.shields.io/badge/platform-Android-green)
+![Status](https://img.shields.io/badge/status-Active%20Development-blue)
 
 ---
 
-## 🌍 The Problem
+## Overview
 
-Over **600 million Indians** live in rural areas with limited access to specialist doctors.
+**MedVision India** is an offline-first AI-powered healthcare screening platform designed for rural and low-resource environments in India.
 
-- **TB**: India accounts for 27% of global TB cases. Most go undetected until late stages.
-- **Skin Disease**: Dermatologists are concentrated in cities; rural patients travel 100–200 km for a consultation.
-- **Eye Disease**: Diabetic Retinopathy affects 18 million Indians; 90% of blindness is preventable if caught early.
+The application performs on-device disease screening for:
 
-A frontline health worker with a smartphone and this app can screen patients and flag high-risk cases for referral — closing the gap between rural populations and specialist care.
+- Tuberculosis (TB)
+- Skin lesions & dermatological conditions
+- Ophthalmological diseases such as Diabetic Retinopathy
 
----
+The system is built specifically for areas with:
 
-## 🎯 What This App Does
+- Poor internet connectivity
+- Limited specialist access
+- High patient-to-doctor ratios
+- Delayed diagnosis infrastructure
 
-| Module | Input | Output |
-|---|---|---|
-| 🫁 **TB Screener** | Chest X-ray photo + symptoms | TB risk score + Grad-CAM heatmap |
-| 🔬 **Skin Lesion Identifier** | Skin photo + lesion description | Lesion class + malignancy risk |
-| 👁️ **Ophthalmic Finder** | Fundus/eye photo + vision symptoms | DR grade + condition flag |
-
-All three modules work **fully offline** on any Android 8+ phone with 2 GB RAM.
+All AI inference runs **locally on the smartphone** using optimized TensorFlow Lite models, enabling healthcare workers to perform rapid preliminary triage without cloud dependency.
 
 ---
 
-## 🏗️ Project Structure
+# Problem Statement
 
+India continues to face severe healthcare inequality between urban and rural regions.
+
+## Key Challenges
+
+### Rural Specialist Shortage
+Community Health Centres (CHCs) in rural India face a massive shortage of:
+
+- Physicians
+- Surgeons
+- Pediatricians
+- Radiologists
+- Dermatologists
+- Ophthalmologists
+
+Many patients travel over 50–100 km for specialist consultation.
+
+---
+
+### Tuberculosis Burden
+
+India accounts for nearly **25% of global TB cases** according to WHO reports.
+
+Challenges include:
+
+- Delayed diagnosis
+- Missed rural screening
+- Lack of chest X-ray interpretation access
+- Ongoing transmission due to undetected cases
+
+---
+
+### Ophthalmology & Skin Disease Gaps
+
+Millions of diabetic patients in India remain unscreened for:
+
+- Diabetic Retinopathy
+- Cataracts
+- Vision-threatening lesions
+
+Similarly, dermatological disorders and skin malignancies often remain undiagnosed in rural populations.
+
+---
+
+# Solution
+
+MedVision India provides:
+
+✅ Offline AI inference  
+✅ Rapid preliminary triage  
+✅ Smartphone-based screening  
+✅ Low hardware requirements  
+✅ Explainable AI outputs  
+✅ Rural healthcare compatibility  
+
+The system combines:
+
+- Image-based deep learning
+- Symptom-based clinical logic
+- Risk scoring
+- Referral prioritization
+
+---
+
+# System Architecture
+
+```mermaid
+flowchart TD
+
+A[Patient Data Input] --> B[Image Capture]
+A --> C[Symptom Questionnaire]
+
+B --> D[TensorFlow Lite CNN Model]
+C --> E[Clinical Rule Engine]
+
+D --> F[Multimodal Fusion]
+E --> F
+
+F --> G[Risk Prediction]
+F --> H[Referral Recommendation]
+F --> I[Explainability Layer]
 ```
-MedVisionIndia/
-│
-├── 📁 data/
-│   ├── README.md                  # Dataset download instructions
-│   ├── tb/                        # TB dataset preprocessing scripts
-│   ├── skin/                      # Skin lesion preprocessing scripts
-│   └── ophthalmic/                # Eye disease preprocessing scripts
-│
-├── 📁 models/
-│   ├── tb_model/                  # MobileNetV3 for TB detection
-│   ├── skin_model/                # EfficientNet-Lite0 for skin lesions
-│   ├── ophthalmic_model/          # EfficientNet-Lite0 for eye disease
-│   └── fusion/                    # Multimodal fusion logic (image + symptoms)
-│
-├── 📁 training/
-│   ├── train_tb.py                # TB model training script
-│   ├── train_skin.py              # Skin model training script
-│   ├── train_ophthalmic.py        # Eye model training script
-│   ├── convert_to_tflite.py       # TFLite INT8 quantization converter
-│   └── evaluate_models.py         # Accuracy, AUC, confusion matrix
-│
-├── 📁 app/                        # Flutter mobile application
-│   ├── lib/
-│   │   ├── screens/               # UI screens per disease module
-│   │   ├── models/                # TFLite model inference classes
-│   │   ├── widgets/               # Reusable UI components
-│   │   └── utils/                 # Image preprocessing, Grad-CAM overlay
-│   └── assets/
-│       └── tflite/                # Bundled .tflite model files
-│
-├── 📁 docs/
-│   ├── architecture.md            # System architecture deep-dive
-│   ├── datasets.md                # Full dataset descriptions and sources
-│   ├── model_cards/               # Model cards (accuracy, bias, limitations)
-│   │   ├── tb_model_card.md
-│   │   ├── skin_model_card.md
-│   │   └── ophthalmic_model_card.md
-│   └── funding_proposal.md        # Draft funding proposal for BIRAC/IndiaAI
-│
-├── 📁 notebooks/
-│   ├── 01_tb_data_exploration.ipynb
-│   ├── 02_skin_data_exploration.ipynb
-│   ├── 03_ophthalmic_data_exploration.ipynb
-│   ├── 04_model_training_demo.ipynb
-│   └── 05_gradcam_visualization.ipynb
-│
-├── 📁 results/
-│   ├── tb_results.md              # TB model performance report
-│   ├── skin_results.md            # Skin model performance report
-│   └── ophthalmic_results.md      # Eye model performance report
-│
-├── requirements.txt               # Python dependencies
-├── LICENSE                        # MIT License
-└── README.md                      # This file
-```
 
 ---
 
-## 🧠 Model Architecture
+# AI Models Used
 
-### Why These Models?
-
-| Disease | Model | Size (INT8) | Target Accuracy |
+| Module | Architecture | Input Type | Goal |
 |---|---|---|---|
-| Tuberculosis | MobileNetV3-Small | ~4 MB | >90% AUC |
-| Skin Lesion | EfficientNet-Lite0 | ~5 MB | >88% accuracy |
-| Ophthalmic | EfficientNet-Lite0 | ~5 MB | >85% accuracy |
-| **Total App** | All 3 + Flutter UI | **~25 MB** | — |
-
-All models use **INT8 post-training quantization** via TensorFlow Lite, which reduces model size by ~4× while maintaining near-identical accuracy on medical images.
-
-### Multimodal Fusion
-
-```
-[Camera Image] ──► [CNN Branch] ──► [Disease Probabilities]
-                                              │
-                                         [Fusion MLP] ──► [Final Risk Score]
-                                              │
-[Symptom Form] ──► [Rule Engine] ──► [Symptom Scores]
-```
-
-The symptom branch captures structured clinical inputs (fever duration, cough type, lesion color/texture, vision blur level) and combines them with image-based predictions without requiring any large language model.
+| TB Screening | MobileNetV3 | Chest X-Ray | TB Detection |
+| Dermatology | EfficientNet-Lite | Skin Images | Lesion Classification |
+| Ophthalmology | EfficientNet-Lite | Fundus Images | Retinopathy Screening |
 
 ---
 
-## 📦 Datasets Used
+# Edge AI Optimization
 
-| Dataset | Disease | Size | Source |
-|---|---|---|---|
-| Shenzhen + Montgomery | TB | 662 images | [NIH NLM](https://lhncbc.nlm.nih.gov/LHC-downloads/downloads.html#tuberculosis-image-data-sets) |
-| Tawsifur Rahman TB Dataset | TB | 700 images | [Kaggle](https://www.kaggle.com/datasets/tawsifurrahman/tuberculosis-tb-chest-xray-dataset) |
-| HAM10000 | Skin Lesions | 10,000 images | [ISIC Archive](https://www.isic-archive.com) |
-| ISIC 2024 SLICE-3D | Skin Lesions | 400,000 images | [Kaggle](https://www.kaggle.com/competitions/isic-2024-challenge) |
-| APTOS 2019 | Diabetic Retinopathy | 5,590 images | [Kaggle](https://www.kaggle.com/c/aptos2019-blindness-detection) |
-| IDRiD | Diabetic Retinopathy | 516 images | [IEEE DataPort](https://ieee-dataport.org/open-access/indian-diabetic-retinopathy-image-dataset-idrid) |
-| ODIR | Multi-eye Disease | 8,000 images | [ODIR Challenge](https://odir2019.grand-challenge.org) |
+To support low-end Android devices:
 
-> Full dataset descriptions, preprocessing steps, and license notes are in [`docs/datasets.md`](docs/datasets.md)
+- INT8 Quantization
+- TensorFlow Lite conversion
+- Lightweight CNN architectures
+- Reduced memory footprint
+- Offline inference pipeline
 
----
+Target support includes devices with:
 
-## 🚀 Roadmap
-
-- [x] Repository structure & documentation
-- [ ] Dataset download + preprocessing scripts (TB)
-- [ ] Dataset download + preprocessing scripts (Skin, Eye)
-- [ ] MobileNetV3 TB model training
-- [ ] EfficientNet-Lite0 Skin model training
-- [ ] EfficientNet-Lite0 Ophthalmic model training
-- [ ] TFLite INT8 conversion for all models
-- [ ] Grad-CAM explainability overlay
-- [ ] Flutter app with all 3 modules
-- [ ] Multilingual UI (Tamil, Hindi, Telugu)
-- [ ] PHC pilot study (target: 100 patients)
-- [ ] BIRAC / IndiaAI grant application
+- Android 8+
+- 2GB RAM
+- Entry-level processors
 
 ---
 
-## 🤝 Relevance to Indian Government Initiatives
+# Clinical Workflow
 
-This project directly aligns with:
-
-- **IndiaAI Mission (MeitY, 2024)** — democratisation of AI for rural and underserved populations
-- **IndiaAI Application Development Initiative (IADI)** — explicitly lists TB X-ray screening and DR detection as priority use cases
-- **Department of Biotechnology (DBT)** — funds AI-based diagnostics for TB, DR, and cancer
-- **BIRAC-India Health Fund** — co-funding pool for TB screening tools for resource-limited settings
-- **National Digital Health Mission (NDHM)** — digital health records and diagnostics at PHC level
-
----
-
-## 🛡️ Privacy & Ethics
-
-- ✅ All AI inference is **on-device** — no images or patient data ever leave the phone
-- ✅ No internet connection required for diagnosis
-- ✅ Compliant with India's **DPDP Act 2023** (Digital Personal Data Protection)
-- ✅ App is a **screening and referral aid** — not a replacement for clinical diagnosis
-- ✅ Every result includes a "Refer to Doctor" recommendation for high-risk findings
+1. Healthcare worker captures patient image
+2. Symptoms are entered into the app
+3. AI model performs offline analysis
+4. Risk score is generated
+5. High-risk patients are flagged
+6. Referral recommendation is issued
 
 ---
 
-## 👨‍💻 Getting Started (For Developers)
+# Datasets
+
+## Tuberculosis
+- Shenzhen Dataset
+- Montgomery Dataset
+- Tawsifur Rahman TB Dataset
+
+## Dermatology
+- HAM10000
+- ISIC Archive
+
+## Ophthalmology
+- APTOS 2019
+- IDRiD
+- ODIR
+
+---
+
+# Privacy & Ethics
+
+## Privacy First Design
+
+- No cloud dependency
+- No patient image upload
+- No external data transfer
+- Local-only processing
+
+## Compliance
+
+The project aims to align with:
+
+- India's DPDP Act 2023
+- Ethical AI healthcare principles
+- Explainable AI standards
+
+---
+
+# Technology Stack
+
+| Category | Technologies |
+|---|---|
+| AI Framework | TensorFlow / TensorFlow Lite |
+| Language | Python |
+| Mobile | Android |
+| ML Models | CNN / MobileNet / EfficientNet |
+| Image Processing | OpenCV |
+| Backend (Optional) | FastAPI / Flask |
+
+---
+
+# Future Goals
+
+- Offline multilingual support
+- Voice-assisted healthcare workflow
+- Integrated patient reporting
+- Federated learning research
+- Rural health analytics dashboard
+- Edge TPU optimization
+
+---
+
+# Installation
+
+## Clone Repository
 
 ```bash
-# Clone the repository
-git clone https://github.com/YOUR_USERNAME/MedVisionIndia.git
+git clone https://github.com/kATHIRVEL101105/MedVisionIndia.git
+
 cd MedVisionIndia
+```
 
-# Install Python dependencies
+---
+
+## Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-# Download TB dataset (instructions in data/tb/README.md)
+---
+
+## Run Dataset Pipeline
+
+```bash
 cd data/tb
+
 python download_tb_data.py
 
-# Run the TB preprocessing pipeline
 python preprocess_tb.py
 ```
 
-> Step-by-step guides for each module are in the [`docs/`](docs/) folder and Jupyter notebooks in [`notebooks/`](notebooks/).
+---
+
+# Vision
+
+MedVision India aims to reduce diagnostic inequality by enabling frontline healthcare workers with accessible offline AI tools.
+
+The goal is not to replace doctors, but to:
+
+- Improve early detection
+- Reduce diagnostic delays
+- Optimize specialist workload
+- Increase rural healthcare reach
 
 ---
 
-## 📄 License
+# License
 
-This project is licensed under the **MIT License** — see [LICENSE](LICENSE) for details.
+Distributed under the MIT License.
 
----
-
-## 📬 Contact & Collaboration
-
-Built with the goal of making specialist-level screening accessible to every Indian, regardless of where they live.
-
-If you are a clinician, researcher, NGO, or government body interested in collaborating or piloting this tool — please open an issue or reach out directly.
+See `LICENSE` for more information.
 
 ---
 
-*"The best doctor is the one who can reach the patient." — MedVision India exists to close that gap.*
+# Disclaimer
+
+This application is intended strictly as a **screening and triage support tool** and must not be considered a replacement for professional medical diagnosis.
+
+---
+
+# Author
+
+Developed by **Kathirvel**  
+Medical Student • AI Healthcare Enthusiast • Python Developer
