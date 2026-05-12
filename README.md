@@ -5,37 +5,54 @@
 ![Platform](https://img.shields.io/badge/platform-Android-green)
 ![Status](https://img.shields.io/badge/status-Active%20Development-blue)
 
+⭐ If you find this project interesting, consider starring the repository and contributing to development.
+
 ---
 
-## Overview
+# Overview
 
 **MedVision India** is an offline-first AI-powered healthcare screening platform designed for rural and low-resource environments in India.
 
-The application performs on-device disease screening for:
+The platform performs on-device disease screening for:
 
 - Tuberculosis (TB)
 - Skin lesions & dermatological conditions
 - Ophthalmological diseases such as Diabetic Retinopathy
 
-The system is built specifically for areas with:
+The system is specifically engineered for environments with:
 
 - Poor internet connectivity
 - Limited specialist access
 - High patient-to-doctor ratios
 - Delayed diagnosis infrastructure
 
-All AI inference runs **locally on the smartphone** using optimized TensorFlow Lite models, enabling healthcare workers to perform rapid preliminary triage without cloud dependency.
+All AI inference runs completely **on-device** using optimized TensorFlow Lite models, enabling frontline healthcare workers to perform rapid preliminary triage without cloud dependency.
+
+---
+
+# Demo
+
+> Demo screenshots and prototype videos coming soon.
+
+### Planned Demonstrations
+
+- Offline AI disease screening
+- Real-time image analysis
+- Explainable AI heatmaps
+- Multilingual healthcare workflow
+- TensorFlow Lite inference on Android
 
 ---
 
 # Problem Statement
 
-India continues to face severe healthcare inequality between urban and rural regions.
+India continues to face severe healthcare inequality between urban and rural populations.
 
 ## Key Challenges
 
 ### Rural Specialist Shortage
-Community Health Centres (CHCs) in rural India face a massive shortage of:
+
+Community Health Centres (CHCs) across rural India face major shortages of:
 
 - Physicians
 - Surgeons
@@ -44,7 +61,7 @@ Community Health Centres (CHCs) in rural India face a massive shortage of:
 - Dermatologists
 - Ophthalmologists
 
-Many patients travel over 50–100 km for specialist consultation.
+Many patients travel over 50–100 km for specialist consultation and delayed diagnosis often worsens disease outcomes.
 
 ---
 
@@ -52,24 +69,25 @@ Many patients travel over 50–100 km for specialist consultation.
 
 India accounts for nearly **25% of global TB cases** according to WHO reports.
 
-Challenges include:
+Key challenges include:
 
 - Delayed diagnosis
 - Missed rural screening
-- Lack of chest X-ray interpretation access
-- Ongoing transmission due to undetected cases
+- Limited radiology access
+- Lack of trained specialists
+- Ongoing transmission from undetected cases
 
 ---
 
-### Ophthalmology & Skin Disease Gaps
+### Ophthalmology & Dermatology Gaps
 
-Millions of diabetic patients in India remain unscreened for:
+Millions of diabetic patients remain unscreened for:
 
 - Diabetic Retinopathy
 - Cataracts
-- Vision-threatening lesions
+- Vision-threatening retinal disease
 
-Similarly, dermatological disorders and skin malignancies often remain undiagnosed in rural populations.
+Similarly, dermatological conditions and skin malignancies are frequently underdiagnosed in rural populations due to poor specialist accessibility.
 
 ---
 
@@ -83,13 +101,15 @@ MedVision India provides:
 ✅ Low hardware requirements  
 ✅ Explainable AI outputs  
 ✅ Rural healthcare compatibility  
+✅ Privacy-first architecture  
 
-The system combines:
+The platform combines:
 
 - Image-based deep learning
 - Symptom-based clinical logic
-- Risk scoring
+- Risk scoring systems
 - Referral prioritization
+- Edge AI optimization
 
 ---
 
@@ -126,26 +146,28 @@ F --> I[Explainability Layer]
 
 # Edge AI Optimization
 
-To support low-end Android devices:
+To support low-end Android devices and rural deployment:
 
 - INT8 Quantization
 - TensorFlow Lite conversion
 - Lightweight CNN architectures
 - Reduced memory footprint
 - Offline inference pipeline
+- Optimized edge deployment
 
-Target support includes devices with:
+### Target Device Support
 
 - Android 8+
-- 2GB RAM
+- 2GB RAM devices
 - Entry-level processors
+- Offline-first usage environments
 
 ---
 
 # Clinical Workflow
 
 1. Healthcare worker captures patient image
-2. Symptoms are entered into the app
+2. Symptoms are entered into the application
 3. AI model performs offline analysis
 4. Risk score is generated
 5. High-risk patients are flagged
@@ -171,22 +193,48 @@ Target support includes devices with:
 
 ---
 
+# Repository Structure
+
+```text
+MedVisionIndia/
+│
+├── data/                  # Dataset pipelines
+├── models/                # Trained AI models
+├── notebooks/             # Research notebooks
+├── app/                   # Android application
+├── docs/                  # Documentation
+├── tests/                 # Testing scripts
+├── requirements.txt
+└── README.md
+```
+
+---
+
 # Privacy & Ethics
 
-## Privacy First Design
+## Privacy-First Design
 
 - No cloud dependency
 - No patient image upload
 - No external data transfer
-- Local-only processing
+- Local-only inference
+- Reduced patient data exposure
 
-## Compliance
+## Compliance & Responsible AI
 
-The project aims to align with:
+This project is being developed with focus on:
+
+- Ethical AI deployment
+- Explainable AI systems
+- Responsible healthcare AI
+- Rural healthcare accessibility
+- Privacy-preserving architecture
+
+The platform aims to align with:
 
 - India's DPDP Act 2023
-- Ethical AI healthcare principles
-- Explainable AI standards
+- Responsible AI principles
+- Medical data privacy standards
 
 ---
 
@@ -203,6 +251,19 @@ The project aims to align with:
 
 ---
 
+# Current Development Focus
+
+Current priorities include:
+
+- TB model optimization
+- TensorFlow Lite deployment
+- Android offline inference
+- Dataset balancing
+- Explainable AI integration
+- Edge-device optimization
+
+---
+
 # Future Goals
 
 - Offline multilingual support
@@ -211,6 +272,25 @@ The project aims to align with:
 - Federated learning research
 - Rural health analytics dashboard
 - Edge TPU optimization
+- Expanded disease screening support
+
+---
+
+# Research Motivation
+
+This project explores how lightweight edge-AI systems can improve healthcare accessibility in low-resource environments without relying on cloud infrastructure.
+
+The long-term goal is to investigate scalable AI-assisted healthcare delivery models for underserved populations.
+
+---
+
+# Current Limitations
+
+- Models are still under training and validation
+- Not clinically certified
+- Requires further real-world evaluation
+- Limited dataset diversity in current prototype
+- Currently designed as a screening aid, not a diagnostic replacement
 
 ---
 
@@ -246,16 +326,17 @@ python preprocess_tb.py
 
 ---
 
-# Vision
+# Mission
 
 MedVision India aims to reduce diagnostic inequality by enabling frontline healthcare workers with accessible offline AI tools.
 
-The goal is not to replace doctors, but to:
+The objective is not to replace doctors, but to:
 
 - Improve early detection
 - Reduce diagnostic delays
 - Optimize specialist workload
 - Increase rural healthcare reach
+- Support scalable healthcare access
 
 ---
 
@@ -263,7 +344,7 @@ The goal is not to replace doctors, but to:
 
 | Task | Status |
 |---|---|
-| Idea & README.md | ✅ Completed |
+| README.md | ✅ Completed |
 | Dataset Collection | ✅ Completed |
 | Model Training | ⏳ In Progress |
 | Android App Development | ⏳ In Progress |
@@ -271,6 +352,73 @@ The goal is not to replace doctors, but to:
 | Offline Inference Pipeline | ⏳ In Progress |
 | Explainable AI (Grad-CAM) | ⏳ In Progress |
 | Clinical Testing | ⏳ In Progress |
+
+---
+
+# Contributing
+
+MedVision India is actively seeking contributors passionate about:
+
+- Healthcare AI
+- Edge AI & TensorFlow Lite
+- Android development
+- Medical imaging
+- Computer Vision
+- Public health technology
+- Rural healthcare accessibility
+
+We welcome:
+
+- Developers
+- Medical students
+- Researchers
+- AI engineers
+- UI/UX designers
+- Public health collaborators
+
+---
+
+## Areas Open for Development
+
+- TB screening model optimization
+- Dermatology classification pipelines
+- Ophthalmology detection systems
+- Android application development
+- Offline inference optimization
+- Explainable AI integration
+- Clinical workflow design
+- Dataset preprocessing
+- Model quantization & deployment
+
+---
+
+## Development Principles
+
+This project is being developed with focus on:
+
+- Privacy-first architecture
+- Offline-first accessibility
+- Low-resource compatibility
+- Ethical AI practices
+- Explainable AI systems
+- Rural healthcare scalability
+
+The platform aims to align with:
+
+- India's DPDP Act 2023
+- Responsible AI principles
+- Medical data privacy standards
+
+---
+
+## How to Contribute
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Open a Pull Request
+
+Contributions, suggestions, and research collaborations are highly welcome.
 
 ---
 
@@ -285,6 +433,8 @@ See `LICENSE` for more information.
 # Disclaimer
 
 This application is intended strictly as a **screening and triage support tool** and must not be considered a replacement for professional medical diagnosis.
+
+The project is currently under active research and development.
 
 ---
 
